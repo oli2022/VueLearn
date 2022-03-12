@@ -1,6 +1,6 @@
 // 產品資料格式
 
-products: [
+const products = [
     {
         category: '甜甜圈',
         content: '尺寸：14x14cm',
@@ -55,15 +55,14 @@ products: [
         ],
     },
 ];
-
 const app = {
     //關注點分離
     data() {
         return {
             products: [...products],
+            temp: {},
         };
     },
 };
 //實體化
 Vue.createApp(app).mount('#app');
-console.log(Vue);
