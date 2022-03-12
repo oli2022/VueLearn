@@ -11,4 +11,22 @@ function login() {
     const username = mailInput.value;
     const password = pawInput.value;
     console.log(username, password);
+    const user = {
+        username,
+        password,
+    };
+
+    axios
+        .post(`${url}/admin/signin`, user)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.dir(error);
+        });
+    cleanstring();
+}
+function cleanstring() {
+    mailInput.value = '';
+    pawInput.value = '';
 }
