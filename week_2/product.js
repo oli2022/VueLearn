@@ -55,3 +55,15 @@ products: [
         ],
     },
 ];
+
+const app = {
+    //關注點分離
+    data() {
+        return {
+            products: [...products],
+        };
+    },
+};
+//實體化
+Vue.createApp(app).mount('#app');
+console.log(Vue);
