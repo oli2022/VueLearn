@@ -1,3 +1,6 @@
+//ESM
+import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.26/vue.esm-browser.min.js';
+
 // 產品資料格式
 
 const products = [
@@ -55,14 +58,26 @@ const products = [
         ],
     },
 ];
-const app = {
-    //關注點分離
+// const app = {
+//     //關注點分離
+//     data() {
+//         return {
+//             products: [...products],
+//             temp: {},
+//         };
+//     },
+// };
+// //實體化
+// //掛載 mount
+// Vue.createApp(app).mount('#app');
+
+//實體化
+const app = createApp({
     data() {
         return {
             products: [...products],
-            temp: {},
         };
     },
-};
-//實體化
-Vue.createApp(app).mount('#app');
+});
+//掛載
+app.mount('#app');
