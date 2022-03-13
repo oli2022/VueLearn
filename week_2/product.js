@@ -76,6 +76,7 @@ const app = createApp({
     data() {
         return {
             products: [...products],
+            temp: {},
         };
     },
 });
