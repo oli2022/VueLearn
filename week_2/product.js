@@ -58,18 +58,6 @@ const products = [
         ],
     },
 ];
-// const app = {
-//     //關注點分離
-//     data() {
-//         return {
-//             products: [...products],
-//             temp: {},
-//         };
-//     },
-// };
-// //實體化
-// //掛載 mount
-// Vue.createApp(app).mount('#app');
 
 //實體化
 const app = createApp({
