@@ -10,6 +10,7 @@
     </head>
     <body>
         <div id="app">
+            <h1>將資料加入Vue data裡面 - 無渲染</h1>
             <form>
                 <div class="mb-3">
                     <label for="productName" class="form-label">產品名稱</label>
@@ -17,8 +18,10 @@
                 </div>
                 <div class="mb-3">
                     <img :src="temp.imageUrl" class="img-fluid d-block" alt="" width="300" />
-                    <label for="productImage" class="form-label">產品圖片</label>
-                    <input type="text" id="productImage" class="form-control" v-model="temp.imageUrl" />
+                    <div>
+                        <label for="productImage" class="form-label">產品圖片</label>
+                        <input type="text" id="productImage" class="form-control" v-model="temp.imageUrl" />
+                    </div>
                 </div>
                 <button type="button" class="btn btn-secondary" v-on:click="confirmEdit">更新</button>
             </form>
@@ -44,17 +47,27 @@
             const App = {
                 data() {
                     return {
+                        products: [],
                         temp: {
-                            name: '卡斯伯',
-                            imageUrl:
-                                'https://images.unsplash.com/photo-1602526430780-782d6b1783fa?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                            name: '卡撐白',
+                            imageUrl: 'https://i.ytimg.com/vi/wrFmRxQ73-Y/mqdefault.jpg',
                         },
                     };
                 },
                 methods: {
                     confirmEdit() {
+                        // unix timestamp
+                        this.temp.id = new Date().getTime();
+                        this.temp.onStock = false;
                         console.log(this.temp);
+                        console.log(products);
+                        this.products.push(this.temp); //把temp加入到products
+                        this.temp = {}; //不清空，新增的資料會一直累加
                     },
+                },
+                //新增生命週期
+                created() {
+                    this.products = products;
                 },
             };
 
@@ -62,3 +75,8 @@
         </script>
     </body>
 </html>
+
+<!-- 
+** this.temp.id = new Date().getTime(); 
+因為temp裡的屬性沒有id 跟 onStock ，所以要新增。
+-->
