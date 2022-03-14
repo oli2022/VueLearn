@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
+
+        <title>雙向綁定</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>雙向綁定</h1>
+            {{ temp }}
+            <form>
+                <div>
+                    <label for="productName" class="form-label">產品名稱</label>
+                    <input v-model="temp.name" type="text" id="productName" class="form-control" />
+                </div>
+                <div>
+                    <img style="width: 500px" v-bind:src="temp.image" alt="" />
+                    <div>
+                        <label for="productImage">產品圖片</label>
+                        <input v-model="temp.image" type="text" id="productImage" />
+                    </div>
+                </div>
+                <button v-on:click="confirmEdit" type="button">更新</button>
+            </form>
+        </div>
+
+        <script>
+            const App = {
+                data() {
+                    return {
+                        temp: {
+                            name: '',
+                            image: 'https://images.unsplash.com/photo-1602526430780-782d6b1783fa?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                        },
+                    };
+                },
+                methods: {
+                    confirmEdit() {
+                        console.log(this.temp);
+                    },
+                },
+            };
+
+            Vue.createApp(App).mount('#app');
+        </script>
+    </body>
+</html>
