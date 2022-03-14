@@ -19,10 +19,11 @@ function login() {
     axios
         .post(`${url}/admin/signin`, user)
         .then((response) => {
-            console.log(response);
+            window.location = 'product.html';
         })
         .catch((error) => {
             console.dir(error);
+            window.location = 'index.html';
         });
     cleanstring();
 }
