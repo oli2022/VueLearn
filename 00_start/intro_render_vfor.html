@@ -21,11 +21,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <!-- :key 唯一值 -->
+                    <tr v-for="item in products" :key="item.id" v-bind:class="{ 'table-success': item.onStock} ">
+                        <!--**-->
+                        <td>{{ item.name }}</td>
+                        <td>
+                            <img v-bind:src="item.imageUrl" v-bind:alt="item.name" />
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="item.onStock" />
+                        </td>
+                        <td>
+                            <button type="button">編輯</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -92,3 +100,9 @@
         </script>
     </body>
 </html>
+
+<!--**-->
+<!-- 
+    v-bind:class="{ 'table-success': item.onStock} ">
+    加上{} 可以做判斷，判斷item.onStock打勾的話，底色會變色
+ -->
