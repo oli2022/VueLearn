@@ -29,7 +29,9 @@
                             <input type="checkbox" v-model="item.onStock" />
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-primary">修改</button>
+                            <button type="button" class="btn btn-outline-primary" v-on:click="editItem(item)">
+                                修改
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -77,6 +79,9 @@
                     };
                 },
                 methods: {
+                    editItem(item_) {
+                        console.log('editItem', item_); //item會回傳資料到item_
+                    },
                     confirmEdit() {
                         this.temp.id = new Date().getTime();
                         this.temp.onStock = false;
