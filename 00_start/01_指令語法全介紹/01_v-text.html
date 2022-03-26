@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>渲染資料於畫面上</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="images/favicon.ico" rel="shortcut icon" />
+        <meta charset="UTF-8" />
+        <script src="/javascripts/vendor.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
+    </head>
+    <body class="bg-lighter">
+        <div class="container main my-5">
+            <div class="row">
+                <main class="col post">
+                    <!-- 章節標題 -->
+                    <div class="mb-4">
+                        <h1 class="mt-0 text-muted">渲染資料於畫面上</h1>
+                        <small>檔名：<code>01_v-text.html</code></small>
+                    </div>
+                    <!-- 🔥🔥練習開始🔥🔥 -->
+                    <div id="app">
+                        <h3>字串 v-text 與 <code v-pre>{{}}</code> (Mustache)</h3>
+                        <p>在 吃早餐</p>
+                        <p><span></span>在<span></span>吃早餐</p>
+                        <input type="text" v-model="name" />
+
+                        <hr />
+                        <h3>原始字串 v-html</h3>
+                        {{ rawHtml }}
+                        <p><a href="https://v3.cn.vuejs.org/api/directives.html#v-html">注意事項</a></p>
+
+                        <hr />
+                        <h3>單次綁定 v-once</h3>
+                        <p>{{ name }}在{{ position }}吃早餐</p>
+                        <input type="text" v-model="name" />
+
+                        <hr />
+                        <h3>進階技巧：表達式</h3>
+                        <p>{{ }}</p>
+                        <p>{{ }}</p>
+                        <p>{{ }}</p>
+                        <p>{{ }}</p>
+
+                        <hr />
+                        <h3>進階技巧：顯示資料狀態</h3>
+                        <p></p>
+
+                        <hr />
+                        <h3>顯示 <span v-pre>{{ }}</span></h3>
+                        <p>這段文字不會被轉譯：{{ name }}在{{ position }}吃早餐</p>
+                    </div>
+
+                    <script>
+                        const App = {
+                            name: 'Hexschool Component',
+                            data() {
+                                return {
+                                    name: '小明',
+                                    position: '早餐店',
+                                    text: '小明在早餐店吃早餐',
+                                    rawHtml: '<p>小明在早餐店吃早餐</p>',
+                                    products: [
+                                        {
+                                            name: '蛋餅',
+                                            price: 30,
+                                            vegan: false,
+                                        },
+                                        {
+                                            name: '飯糰',
+                                            price: 35,
+                                            vegan: false,
+                                        },
+                                        {
+                                            name: '小籠包',
+                                            price: 60,
+                                            vegan: false,
+                                        },
+                                        {
+                                            name: '蘿蔔糕',
+                                            price: 30,
+                                            vegan: true,
+                                        },
+                                    ],
+                                    selected: [
+                                        {
+                                            name: '蛋餅',
+                                            price: 30,
+                                            vegan: false,
+                                        },
+                                        {
+                                            name: '飯糰',
+                                            price: 35,
+                                            vegan: false,
+                                        },
+                                    ],
+                                };
+                            },
+                            methods: {
+                                say(name) {
+                                    return `${name}在${this.position}吃早餐`;
+                                },
+                            },
+                            computed: {
+                                total() {
+                                    const total = this.selected.reduce((curr, next) => {
+                                        return curr + next.price;
+                                    }, 0);
+                                    console.log(total);
+                                    return total;
+                                },
+                            },
+                            created() {},
+                        };
+
+                        Vue.createApp(App).mount('#app');
+                    </script>
+
+                    <!-- 🙇🙇練習結束🙇🙇 -->
+                </main>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="/stylesheets/all.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    </body>
+</html>
